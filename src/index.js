@@ -36,7 +36,7 @@ for (var i = 0; i < pieces.length; i++) {
 
 }
   
-/////////////////////
+
 	
 var multipliers = calculate(base);
 
@@ -45,7 +45,15 @@ var finallist = [];
 for (i = 1; i < multipliers.length -1; i++) {
 	
 	finallist.push(getTempCount(number, multipliers[i]))
+	console.log(multipliers[i]);
 }
 
-	console.log(finallist);
+// trying to trace the right answer :)
+
+	if (finallist.length == 2) {
+		return finallist[1];}
+		else if (finallist.length > 2 && finallist.length <= 4) {
+	    return finallist[2]; }
+		else if (finallist.length > 4) {
+		return finallist[3];}
 }
