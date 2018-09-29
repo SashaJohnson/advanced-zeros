@@ -1,4 +1,3 @@
-
 module.exports = function getZerosCount(number, base) {
 
 //getting multipliers from base:
@@ -13,6 +12,7 @@ function calculate(base) {
 	return(answer);
 }
 	
+// getting list of possible values:    
 	
 function getTempCount(number, passedMultiplier) {
   
@@ -29,31 +29,31 @@ function getTempCount(number, passedMultiplier) {
 
 var sum = 0;
 for (var i = 0; i < pieces.length; i++) {
- 
     sum = sum + pieces[i];
-}
+    }
 	return sum;
+    }
 
-}
-  
-
-	
 var multipliers = calculate(base);
-
 var finallist = [];
 
-for (i = 1; i < multipliers.length -1; i++) {
-	
-	finallist.push(getTempCount(number, multipliers[i]))
-	console.log(multipliers[i]);
-}
+//building final list:
 
-// trying to trace the right answer :)
-
-	if (finallist.length == 2) {
-		return finallist[1];}
-		else if (finallist.length > 2 && finallist.length <= 4) {
-	    return finallist[2]; }
-		else if (finallist.length > 4) {
-		return finallist[3];}
+if (multipliers.length == 1) {
+    finallist.push(getTempCount(number, multipliers[0]));
+    } else {
+        for (i = 1; i < multipliers.length; i++) {
+            if (multipliers[i] % 2 != 0) {
+                finallist.push(getTempCount(number, multipliers[i]))
+                //console.log(multipliers[i]); <-- used for analysis
+            }
+        }
+    }
+    
+    //sorting final list:
+    
+if (finallist.length == 1) {
+    return finallist;
+    } else {return finallist[1];}
+    
 }
